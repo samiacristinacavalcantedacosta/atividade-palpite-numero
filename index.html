@@ -1,0 +1,39 @@
+<script>
+let playAgain = true;
+
+while (playAgain) {
+    // Gerar um número aleatório entre 1 e 100
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+   
+    while (true) {
+        // Pedir ao jogador para fazer um palpite
+        const guess = parseInt(prompt("Digite um número entre 1 e 100:"));
+
+        // Verificar se o palpite é válido
+        if (isNaN(guess) || guess < 1 || guess > 100) {
+            alert("Por favor, insira um número válido entre 1 e 100.");
+            continue;
+        }
+
+        attempts++;
+
+        // Verificar se o palpite está correto
+        if (guess === randomNumber) {
+            alert(`Parabéns! Você acertou o número ${randomNumber} em ${attempts} tentativas.`);
+            break;
+        } else if (guess < randomNumber) {
+            alert("O seu palpite é muito baixo. Tente novamente.");
+        } else {
+            alert("O seu palpite é muito alto. Tente novamente.");
+        }
+    }
+
+    // Perguntar ao jogador se ele quer jogar novamente
+    const playAgainResponse = prompt("Deseja jogar novamente? (Digite 'sim' para continuar)");
+    playAgain = (playAgainResponse.toLowerCase() === 'sim');
+}
+
+alert("Obrigado por jogar!");
+
+</script>
